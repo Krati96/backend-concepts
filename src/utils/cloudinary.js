@@ -25,7 +25,20 @@ const uploadOnCloudinary = async (localFilePath) => {
   }
 }
 
-export { uploadOnCloudinary }
+const deleteOnClodinary = async (url) =>{
+  try {
+    if(!url) return null
+    await cloudinary.api.delete_resources([url],
+      {
+        type: 'upload',
+        resource_type: "auto"
+      }).then(console.log);
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export { uploadOnCloudinary, deleteOnClodinary }
 
 // cloudinary.v2.uploader.upload("https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
 //   { public_id: "olympic_flag" }, 
