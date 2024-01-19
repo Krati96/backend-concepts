@@ -177,7 +177,7 @@ const deleteVideo = asyncHandler(async (req, res) => {
 
 const togglePublishStatus = asyncHandler(async (req, res) => {
     const { videoId } = req.params
-    if(isValidObjectId(videoId)){
+    if(!isValidObjectId(videoId)){
         throw new ApiError(401,"Video not found")
     }
     const video = await Video.findById(videoId);
